@@ -36,17 +36,9 @@ elif [ -e "$target_directory" ]; then
         exit 1
     fi
 
-    runuser -u n1 -- git clone \
-        --branch "$branch_name" \
-        --single-branch \
-        "$repository_url" \
-        "$target_directory"
+    runuser -u n1 -- git clone
 else
-    runuser -u n1 -- git clone \
-        --branch "$branch_name" \
-        --single-branch \
-        "$repository_url" \
-        "$target_directory"
+    runuser -u n1 -- git clone
 fi
 
 runuser -u n1 -- git \
@@ -78,3 +70,4 @@ runuser -u n1 -- git \
 printf 'commit: '
 runuser -u n1 -- git -C "$target_directory" rev-parse HEAD
 runuser -u n1 -- git -C "$target_directory" status --short --branch
+
